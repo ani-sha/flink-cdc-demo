@@ -1,0 +1,18 @@
+source:
+  type: mysql
+  hostname: localhost
+  port: 3306
+  username: root
+  password: 123456
+  database-name: mydb
+  table-name: orders, products
+  server-time-zone: UTC
+
+sink:
+  type: elasticsearch
+  hosts: http://localhost:9200
+  index: enriched_orders
+
+pipeline:
+  name: Sync MySQL to Elasticsearch
+  parallelism: 1

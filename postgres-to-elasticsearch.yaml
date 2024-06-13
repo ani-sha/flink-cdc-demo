@@ -1,0 +1,20 @@
+source:
+  type: postgres
+  hostname: localhost
+  port: 5432
+  username: postgres
+  password: postgres
+  database-name: postgres
+  schema-name: public
+  table-name: shipments
+  slot.name: flink
+  server-time-zone: UTC
+
+sink:
+  type: elasticsearch
+  hosts: http://localhost:9200
+  index: enriched_orders
+
+pipeline:
+  name: Sync Postgres to Elasticsearch
+  parallelism: 1
